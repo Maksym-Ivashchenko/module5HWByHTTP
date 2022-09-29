@@ -18,6 +18,10 @@ dependencies {
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
+// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime
+    implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.13'
 
 }
 

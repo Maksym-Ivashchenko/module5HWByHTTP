@@ -2,15 +2,15 @@ package ua.goit.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Arrays;
 import java.util.Objects;
+import java.util.Set;
 
 public class Pet {
     private long id;
     private Category category;
     private String name;
-    private String[] photoUrls;
-    private Tag[] tags;
+    private Set<String> photoUrls;
+    private Set<Tag> tags;
     private Status status;
 
     public enum Status {
@@ -20,6 +20,15 @@ public class Pet {
         PENDING,
         @SerializedName("sold")
         SOLD
+    }
+
+    public Pet(long id, Category category, String name, Set<String> photoUrls, Set<Tag> tags, Status status) {
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.photoUrls = photoUrls;
+        this.tags = tags;
+        this.status = status;
     }
 
     public long getId() {
@@ -46,19 +55,19 @@ public class Pet {
         this.name = name;
     }
 
-    public String[] getPhotoUrls() {
+    public Set<String> getPhotoUrls() {
         return photoUrls;
     }
 
-    public void setPhotoUrls(String[] photoUrls) {
+    public void setPhotoUrls(Set<String> photoUrls) {
         this.photoUrls = photoUrls;
     }
 
-    public Tag[] getTags() {
+    public Set<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Tag[] tags) {
+    public void setTags(Set<Tag> tags) {
         this.tags = tags;
     }
 
@@ -75,15 +84,12 @@ public class Pet {
         if (this == o) return true;
         if (!(o instanceof Pet)) return false;
         Pet pet = (Pet) o;
-        return id == pet.id && Objects.equals(category, pet.category) && Objects.equals(name, pet.name) && Arrays.equals(photoUrls, pet.photoUrls) && Arrays.equals(tags, pet.tags) && status == pet.status;
+        return id == pet.id && Objects.equals(category, pet.category) && Objects.equals(name, pet.name) && Objects.equals(photoUrls, pet.photoUrls) && Objects.equals(tags, pet.tags) && status == pet.status;
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, category, name, status);
-        result = 31 * result + Arrays.hashCode(photoUrls);
-        result = 31 * result + Arrays.hashCode(tags);
-        return result;
+        return Objects.hash(id, category, name, photoUrls, tags, status);
     }
 
     @Override
@@ -92,8 +98,8 @@ public class Pet {
                 "id=" + id +
                 ", category=" + category +
                 ", name='" + name + '\'' +
-                ", photoUrls=" + Arrays.toString(photoUrls) +
-                ", tags=" + Arrays.toString(tags) +
+                ", photoUrls=" + photoUrls +
+                ", tags=" + tags +
                 ", status=" + status +
                 '}';
     }
