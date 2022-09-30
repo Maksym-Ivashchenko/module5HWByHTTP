@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 public class Order {
-    private long id;
-    private long petId;
-    private long quantity;
+    private Long id;
+    private Long petId;
+    private Long quantity;
     private String shipDate;
     private Status status;
     private boolean complete;
@@ -21,27 +21,38 @@ public class Order {
         DELIVERED
     }
 
-    public long getId() {
+    public Order() {}
+
+    public Order(Long id, Long petId, Long quantity, String shipDate, Status status, boolean complete) {
+        this.id = id;
+        this.petId = petId;
+        this.quantity = quantity;
+        this.shipDate = shipDate;
+        this.status = status;
+        this.complete = complete;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getPetId() {
+    public Long getPetId() {
         return petId;
     }
 
-    public void setPetId(long petId) {
+    public void setPetId(Long petId) {
         this.petId = petId;
     }
 
-    public long getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 
@@ -74,7 +85,7 @@ public class Order {
         if (this == o) return true;
         if (!(o instanceof Order)) return false;
         Order order = (Order) o;
-        return id == order.id && petId == order.petId && quantity == order.quantity && complete == order.complete && Objects.equals(shipDate, order.shipDate) && status == order.status;
+        return complete == order.complete && Objects.equals(id, order.id) && Objects.equals(petId, order.petId) && Objects.equals(quantity, order.quantity) && Objects.equals(shipDate, order.shipDate) && status == order.status;
     }
 
     @Override

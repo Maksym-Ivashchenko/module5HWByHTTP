@@ -27,5 +27,9 @@ public class Help implements Command {
         view.write(String.format("Enter %s to update the pet with form data",
                 UpdatePetWithFormData.UPDATE_PET_WITH_FORM_DATA));
         view.write(String.format("Enter %s to delete the pet", DeletePet.DELETE_PET));
+        view.write(String.format("Enter %s to order placed for purchasing the pet", PlaceOrderPet.PLACE_ORDER_PET));
+        view.write(String.format("Enter %s to find purchase order by id", GetOrderById.FIND_ORDER_BY_ID));
+        view.write(String.format("Enter %s to get pet inventory by status", GetPetInventoryByStatus.PET_INVENTORY));
+        view.write(String.format("Enter %s to delete purchase order by id", DeleteOrderById.DELETE_ORDER_BY_ID));
     }
 }

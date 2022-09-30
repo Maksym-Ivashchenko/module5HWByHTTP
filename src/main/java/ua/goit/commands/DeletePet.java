@@ -32,6 +32,6 @@ public class DeletePet implements Command {
             }
         }
         petRequests.deletePet(petId);
-        view.write("Pet with id " + petId + " deleted.");
+        view.write(String.format("Pet with id %s deleted.", petId));
     }
 }
