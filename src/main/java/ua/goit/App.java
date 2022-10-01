@@ -4,6 +4,7 @@ import ua.goit.commands.*;
 import ua.goit.controller.Controller;
 import ua.goit.requests.PetRequests;
 import ua.goit.requests.StoreRequests;
+import ua.goit.requests.UserRequests;
 import ua.goit.view.Console;
 import ua.goit.view.View;
 
@@ -18,10 +19,12 @@ public class App {
 
         PetRequests petRequests = new PetRequests();
         StoreRequests storeRequests = new StoreRequests();
+        UserRequests userRequests = new UserRequests();
         View view = new Console(scanner);
         List<Command> commands = new ArrayList<>();
         commands.add(new Help(view));
         commands.add(new Exit(view));
+
         commands.add(new GetPetsByStatus(view, petRequests));
         commands.add(new GetPetById(view, petRequests));
         commands.add(new AddPet(view, petRequests));
@@ -34,6 +37,15 @@ public class App {
         commands.add(new GetOrderById(view, storeRequests));
         commands.add(new GetPetInventoryByStatus(view, storeRequests));
         commands.add(new DeleteOrderById(view, storeRequests));
+
+        commands.add(new UserLogin(view, userRequests));
+        commands.add(new UserLogout(view, userRequests));
+        commands.add(new GetUserByName(view, userRequests));
+        commands.add(new AddUser(view, userRequests));
+        commands.add(new AddUsersWithArray(view, userRequests));
+        commands.add(new AddUsersWithList(view, userRequests));
+        commands.add(new UpdateUser(view, userRequests));
+        commands.add(new DeleteUser(view, userRequests));
 
         Controller controller = new Controller(view, commands);
         controller.run();

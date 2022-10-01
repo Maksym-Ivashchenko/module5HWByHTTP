@@ -3,7 +3,7 @@ package ua.goit.commands;
 import ua.goit.view.View;
 
 public class Help implements Command {
-    private static final String HELP = "help";
+    public static final String HELP = "help";
     private final View view;
 
     public Help(View view) {
@@ -31,5 +31,15 @@ public class Help implements Command {
         view.write(String.format("Enter %s to find purchase order by id", GetOrderById.FIND_ORDER_BY_ID));
         view.write(String.format("Enter %s to get pet inventory by status", GetPetInventoryByStatus.PET_INVENTORY));
         view.write(String.format("Enter %s to delete purchase order by id", DeleteOrderById.DELETE_ORDER_BY_ID));
+        view.write(String.format("Enter %s for user authorization", UserLogin.LOGIN));
+        view.write(String.format("Enter %s to logout", UserLogout.LOGOUT));
+        view.write(String.format("Enter %s to get user by user name", GetUserByName.GET_USER_BY_NAME));
+        view.write(String.format("Enter %s to create user", AddUser.ADD_USER));
+        view.write(String.format("Enter %s to creates list of users with given input array",
+                AddUsersWithArray.ADD_USER_WITH_ARRAY));
+        view.write(String.format("Enter %s to creates list of users with given input list",
+                AddUsersWithList.ADD_USER_WITH_LIST));
+        view.write(String.format("Enter %s to update user", UpdateUser.UPDATE_USER));
+        view.write(String.format("Enter %s to delete user by name", DeleteUser.DELETE_USER));
     }
 }
